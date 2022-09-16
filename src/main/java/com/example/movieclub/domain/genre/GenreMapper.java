@@ -9,4 +9,11 @@ public class GenreMapper {
                 genre.getDescription()
         );
     }
+
+    public static Genre map(GenreDto genreDto) {
+        Genre genre = new Genre();
+        genre.setName(genreDto.getName());
+        genre.setDescription(genreDto.getDescription());
+        return genre;
+    }
 }

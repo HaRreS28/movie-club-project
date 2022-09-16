@@ -256,3 +256,54 @@ a{
     margin: 16px 0;
 }
 /*error pages END*/
+
+
+.list-border{
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+}
+
+.list-border > li {
+    align-self: stretch;
+    font-size: 1.2rem;
+    border: 1px #6d6d6d solid;
+    padding: 16px;
+    text-align: center;
+}
+
+.mc-form{
+    display: flex;
+    flex-direction: column;
+    margin: 0 32px;
+}
+
+.mc-form > * {
+    margin-top: 8px;
+}
+
+.mc-form > input,
+.mc-form > textarea,
+.mc-form > [type="submit"] {
+    font-size: 1.2rem;
+    color: black;
+    padding: 8px;
+}
+
+.mc-form > [type="submit"] {
+    margin-top: 16px;
+    background-color: white;
+    color: #ffc107;
+    border: none;
+    cursor: pointer;
+}
+
+textarea {
+    font-family: inherit;
+}
+
+.notification-bar {
+    text-align: center;
+    background-color: #ffc107;
+    padding: 8px 0;
+}

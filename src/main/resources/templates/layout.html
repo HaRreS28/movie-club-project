@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
           integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
           crossorigin="anonymous"
-          referrerpolicy="no-referrer" />
+          referrerpolicy="no-referrer"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
-    <script src="../static/scripts/common.js"  th:src="@{/scripts/common.js}" defer></script>
+    <script src="../static/scripts/common.js" th:src="@{/scripts/common.js}" defer></script>
     <link rel="stylesheet" href="../static/styles/main.css" th:href="@{/styles/main.css}">
 </head>
 <body>
@@ -19,7 +19,7 @@
     <nav class="nav">
         <ul class="menu">
             <li class="menu-logo-container">
-                <a href="#" th:href="@{#}">
+                <a href="#" th:href="@{/}">
                     <i class="fas fa-film logo"></i> MovieClub
                 </a>
             </li>
@@ -29,14 +29,21 @@
             </li>
 
             <li class="menu-item">
-                <a href="#" th:href="@{#}">Gatunki</a>
+                <a href="#" th:href="@{/gatunki-filmowe}">Gatunki</a>
             </li>
+
             <li class="menu-item">
                 <a href="#" th:href="@{#}">Top10</a>
             </li>
+
+            <li class="menu-item">
+                <a href="#" th:href="@{/admin}">Administracja</a>
+            </li>
+
             <li class="menu-item">
                 <a href="#" th:href="@{#}">Zaloguj się</a>
             </li>
+
 
         </ul>
     </nav>

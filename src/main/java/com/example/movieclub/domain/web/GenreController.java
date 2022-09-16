@@ -31,4 +31,12 @@ public class GenreController {
         model.addAttribute("movies",movieDtos);
         return "movie-listing";
     }
+
+    @GetMapping("/gatunki-filmowe")
+    public String getAllGenres(Model model){
+        List<GenreDto> genreDtos = genreService.findAll();
+        model.addAttribute("genres",genreDtos);
+        return "genre-listing";
+    }
 }
+
