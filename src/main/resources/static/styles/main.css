@@ -293,10 +293,16 @@ a{
 }
 
 
+
 .mc-form> select > option{
     color: black;
 }
 
+
+
+.mc-form> select > option{
+    color: black;
+}
 
 .mc-form > [type="submit"] {
     margin-top: 16px;
