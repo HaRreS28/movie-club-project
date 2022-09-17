@@ -30,9 +30,10 @@ public class Movie {
     @Column(name = "youtube_trailer_id")
     private String youtubeTrailerId;
     @ManyToOne
-    @JoinColumn(nullable = false,referencedColumnName = "id",name = "genre_id")
+    @JoinColumn(nullable = false, referencedColumnName = "id", name = "genre_id")
     private Genre genre;
     @Column(name = "promoted")
     private boolean promoted;
+    private String poster;
 
 }

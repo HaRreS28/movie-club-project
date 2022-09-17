@@ -1,5 +1,8 @@
 package com.example.movieclub.domain.movie;
 
+import com.example.movieclub.domain.genre.Genre;
+import com.example.movieclub.domain.genre.GenreRepository;
+import com.example.movieclub.domain.storage.FileStorageService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +14,8 @@ import java.util.Optional;
 @AllArgsConstructor
 public class MovieService {
     private final MovieRepository movieRepository;
+    private final GenreRepository genreRepository;
+    private final FileStorageService fileStorageService;
 
     public List<MovieDto> findAllPromotedMovies() {
         return movieRepository.findAllByPromotedIsTrue()
@@ -26,5 +31,30 @@ public class MovieService {
     public List<MovieDto> findAllByGenreName(String name) {
         return movieRepository.findAllByGenre_NameIgnoreCase(name)
                 .stream().map(MovieMapper::map).toList();
+    }
+
+    public MovieDto addMovie(MovieSaveDto movieSaveDto){
+        Movie movie = new Movie();
+        movie.setDescription(movieSaveDto.getDescription());
+        movie.setPromoted(movieSaveDto.isPromoted());
+        movie.setOriginalTitle(movieSaveDto.getOriginalTitle());
+        movie.setReleaseYear(movieSaveDto.getReleaseYear());
+        movie.setTitle(movieSaveDto.getTitle());
+        movie.setYoutubeTrailerId(movieSaveDto.getYoutubeTrailerId());
+        movie.setShortDescription(movieSaveDto.getShortDescription());
+
+        Genre genre = genreRepository.findByNameIgnoreCase(movieSaveDto.getGenre()).orElseThrow();
+        movie.setGenre(genre);
+
+        if(movieSaveDto.getPoster().getSize()>2){
+            String saveImage = fileStorageService.saveImage(movieSaveDto.getPoster());
+            movie.setPoster(saveImage);
+        }
+        else{
+            System.out.println("dasda");
+        }
+        movieRepository.save(movie);
+        return MovieMapper.map(movie);
+
     }
 }

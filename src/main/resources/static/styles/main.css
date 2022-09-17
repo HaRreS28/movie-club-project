@@ -157,6 +157,7 @@ a{
 /*Odstępy między poszczególnymi informacjami*/
 .movie-summary-item {
     margin: 8px 0;
+    overflow-wrap: break-word;
 }
 /*Większy tytuł filmu*/
 .movie-summary-title {
@@ -284,18 +285,32 @@ a{
 
 .mc-form > input,
 .mc-form > textarea,
-.mc-form > [type="submit"] {
+.mc-form > [type="submit"] ,
+.mc-form > select{
     font-size: 1.2rem;
     color: black;
     padding: 8px;
 }
 
+.mc-form> select > option{
+    color: black;
+}
 .mc-form > [type="submit"] {
     margin-top: 16px;
     background-color: white;
     color: #ffc107;
     border: none;
     cursor: pointer;
+}
+
+.mc-form > input[type="checkbox"]{
+    transform: scale(2.1);
+    align-self: start;
+    margin: 10px 0 10px 5px;
+}
+
+.mc-form>input[type="file"]{
+    color: white;
 }
 
 textarea {

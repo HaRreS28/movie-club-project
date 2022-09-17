@@ -23,6 +23,7 @@
             <column name="promoted" type="BOOLEAN">
                 <constraints nullable="false"/>
             </column>
+            <column name="poster" type="varchar(100)"/>
         </createTable>
         <addForeignKeyConstraint baseColumnNames="genre_id" baseTableName="movie" constraintName="FK_MOVIE_ON_GENRE" referencedColumnNames="id" referencedTableName="genre"/>
     </changeSet>
