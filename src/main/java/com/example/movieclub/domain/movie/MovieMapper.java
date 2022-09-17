@@ -1,6 +1,14 @@
 package com.example.movieclub.domain.movie;
 
+import com.example.movieclub.domain.genre.Genre;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.nio.file.Files;
 
 
 public class MovieMapper {
@@ -14,6 +22,8 @@ public class MovieMapper {
                 movie.getYoutubeTrailerId(),
                 movie.getReleaseYear(),
                 movie.getGenre().getName(),
-                movie.isPromoted());
+                movie.isPromoted(),
+                movie.getPoster());
     }
+
 }

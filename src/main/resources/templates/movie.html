@@ -14,10 +14,10 @@
             <div class="movie-summary">
                 <!-- Plakat -->
                 <img src="../static/img/poster-placeholder.png"
+                     th:src="${movie.poster ne null} ? @{|/img/${movie.poster}|} : @{/img/poster-placeholder.png}"
                      alt="tytuł filmu"
-                     class="movie-summary-cover"
-                     th:src="@{/img/poster-placeholder.png}"
                      th:alt="${movie.title}"
+                     class="movie-summary-cover"
                 />
                 <!-- informacje o filmie -->
                 <div class="movie-summary-info">
@@ -26,9 +26,11 @@
                     <p class="movie-summary-item" th:text="|Rok: ${movie.releaseYear}|">Rok: 2001</p>
                     <p class="movie-summary-item">Gatunek: <a href="#"
                     th:text="${movie.genre}" th:href="@{|/gatunek/${movie.genre}|}">Fantasy</a></p>
-                    <p class="movie-summary-item" th:text="${movie.shortDescription}">
+                    <div class="movie-summary-item">
+                        <p th:text="${movie.shortDescription}" style="word-wrap: break-word">
                         Podróż odważnego hobbita i jego towarzyszy w poszukiwaniu pierścienia.
-                    </p>
+                        </p>
+                    </div>
                 </div>
             </div>
             <!-- Ocena -->

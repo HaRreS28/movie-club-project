@@ -18,4 +18,5 @@ public class MovieDto implements Serializable {
     private final Integer releaseYear;
     private String genre;
     private final boolean promoted;
+    private String poster;
 }
