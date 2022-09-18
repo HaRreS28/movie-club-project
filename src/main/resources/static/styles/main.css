@@ -304,6 +304,11 @@ a{
     color: black;
 }
 
+
+.mc-form> select > option{
+    color: black;
+}
+
 .mc-form > [type="submit"] {
     margin-top: 16px;
     background-color: white;
@@ -311,7 +316,6 @@ a{
     border: none;
     cursor: pointer;
 }
-
 
 .mc-form > input[type="checkbox"]{
     transform: scale(2.1);
@@ -333,4 +337,3 @@ textarea {
     background-color: #ffc107;
     padding: 8px 0;
 }
-

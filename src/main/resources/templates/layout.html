@@ -38,6 +38,7 @@
                 <a href="#" th:href="@{#}">Top10</a>
             </li>
 
+
             <li class="menu-item" sec:authorize="hasAnyAuthority('ADMIN','MODERATOR')">
                 <a href="#" th:href="@{/admin}">Administracja</a>
             </li>
@@ -45,6 +46,15 @@
             <li class="menu-item">
                 <a href="#" th:href="@{/login}" sec:authorize="!isAuthenticated()">Zaloguj się</a>
                 <a href="#" th:href="@{/logout}" sec:authorize="isAuthenticated()">Wyloguj się</a>
+            </li>
+
+
+            <li class="menu-item">
+                <a href="#" th:href="@{/admin}">Administracja</a>
+            </li>
+
+            <li class="menu-item">
+                <a href="#" th:href="@{#}">Zaloguj się</a>
             </li>
 
 
