@@ -19,7 +19,7 @@ public class CustomSecurityConfiguration {
                 request.mvcMatchers("/admin/**")
                         .hasAnyAuthority("ADMIN","MODERATOR")
                         .anyRequest().permitAll());
-        http.formLogin(Customizer.withDefaults());
+        http.formLogin().loginPage("/login");
         http.csrf().disable();
         return http.build();
     }

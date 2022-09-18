@@ -7,6 +7,7 @@
 
 body{
     font-family: 'Roboto', sans-serif;
+
 }
 
 a{
@@ -101,6 +102,7 @@ a{
 .list-description {
     text-align: center;
     margin: 16px 0;
+    overflow-wrap: break-word;
 }
 
 .movie-list {
@@ -139,6 +141,7 @@ a{
 .movie-summary {
     display: flex;
     margin-top: 16px;
+    max-width: 500px;
 }
 /*Mniejsza okładka na małych ekranach*/
 .movie-summary-cover {
@@ -148,6 +151,8 @@ a{
 /*Odstęp informacji o filmie od okładki*/
 .movie-summary-info {
     margin-left: 16px;
+    overflow-wrap: break-word;
+    max-width: 220px;
 }
 /*Oryginalny tytuł w kolorze szarym i odstęp pod nim*/
 .movie-summary-original-title {
@@ -158,6 +163,12 @@ a{
 .movie-summary-item {
     margin: 8px 0;
     overflow-wrap: break-word;
+}
+
+.movie-summary-item-paragraph {
+    margin: 8px 0;
+    overflow-wrap: break-word;
+    max-width: 360px;
 }
 /*Większy tytuł filmu*/
 .movie-summary-title {
@@ -210,6 +221,8 @@ a{
 
 .movie-section-heading {
     margin-bottom: 8px;
+    max-width: 960px;
+    overflow-wrap: break-word;
 }
 /*Wyśrodkowanie trailera*/
 .movie-trailer {
@@ -231,6 +244,9 @@ a{
         display: flex;
         flex-wrap: nowrap;
     }
+    .movie-summary-info {
+        max-width: 500px;
+    }
     /*Większe odstępy między przyciskami*/
     .movie-rating-button {
         font-size: 1.2rem;
@@ -240,6 +256,12 @@ a{
     .movie-trailer{
         width:560px;
         height:315px;
+    }
+}
+
+@media only screen and (min-width: 700px) {
+    .movie-summary-info {
+        max-width: 340px;
     }
 }
 
@@ -336,4 +358,9 @@ textarea {
     text-align: center;
     background-color: #ffc107;
     padding: 8px 0;
+}
+
+.mc-form-message{
+    color:#ffc107;
+    text-align: center;
 }
