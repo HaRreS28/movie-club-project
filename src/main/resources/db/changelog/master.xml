@@ -10,6 +10,7 @@
     <include file="0003_create_table_appUser.xml" relativeToChangelogFile="true"/>
     <include file="0004_create_table_appUserRole.xml" relativeToChangelogFile="true"/>
     <include file="0005_create_table_app_user_many_roles.xml" relativeToChangelogFile="true"/>
+    <include file="0006_create_table_token.xml" relativeToChangelogFile="true"/>
 
 
     <include file="../testData/0001_genres.sql" relativeToChangelogFile="true" context="dev"/>

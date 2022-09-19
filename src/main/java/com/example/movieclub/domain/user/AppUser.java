@@ -31,7 +31,7 @@ public class AppUser implements UserDetails {
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
     private Set<AppUserRole> appUserRole = new HashSet<>();
     private Boolean locked = false;
-    private Boolean enabled = true;
+    private Boolean enabled = false;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

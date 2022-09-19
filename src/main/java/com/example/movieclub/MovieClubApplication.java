@@ -12,8 +12,8 @@ public class MovieClubApplication {
 
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(MovieClubApplication.class, args);
-        AppUserService userService = context.getBean(AppUserService.class);
-        System.out.println(userService.findUserByEmail("admin@example.com").getRoles());
+//        AppUserService userService = context.getBean(AppUserService.class);
+//        System.out.println(userService.findUserByEmail("admin@example.com").getRoles());
 
     }
 
