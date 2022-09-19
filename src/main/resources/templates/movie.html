@@ -27,7 +27,7 @@
                     <p class="movie-summary-item">Gatunek: <a href="#"
                     th:text="${movie.genre}" th:href="@{|/gatunek/${movie.genre}|}">Fantasy</a></p>
                     <div class="movie-summary-item">
-                        <p th:text="${movie.shortDescription}" style="word-wrap: break-word">
+                        <p class="movie-summary-item-paragraph" th:text="${movie.shortDescription}">
                         Podróż odważnego hobbita i jego towarzyszy w poszukiwaniu pierścienia.
                         </p>
                     </div>

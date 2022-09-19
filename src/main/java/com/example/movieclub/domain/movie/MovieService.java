@@ -5,6 +5,7 @@ import com.example.movieclub.domain.genre.GenreRepository;
 import com.example.movieclub.domain.storage.FileStorageService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -33,6 +34,7 @@ public class MovieService {
                 .stream().map(MovieMapper::map).toList();
     }
 
+    @Transactional
     public MovieDto addMovie(MovieSaveDto movieSaveDto){
         Movie movie = new Movie();
         movie.setDescription(movieSaveDto.getDescription());
@@ -46,12 +48,9 @@ public class MovieService {
         Genre genre = genreRepository.findByNameIgnoreCase(movieSaveDto.getGenre()).orElseThrow();
         movie.setGenre(genre);
 
-        if(movieSaveDto.getPoster().getSize()>2){
+        if(movieSaveDto.getPoster().getSize()>2) {
             String saveImage = fileStorageService.saveImage(movieSaveDto.getPoster());
             movie.setPoster(saveImage);
-        }
-        else{
-            System.out.println("dasda");
         }
         movieRepository.save(movie);
         return MovieMapper.map(movie);
