@@ -1,1 +1,19 @@
-
+spring:
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: validate
+  liquibase:
+    change-log: classpath:/db/changelog/master.xml
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: marcinmoch757@gmail.com
+    password: dbktcjtuhjasxgip
+    properties:
+      mail:
+        smtp:
+          ssl:
+          auth: true
+          starttls:
+            enable: true
