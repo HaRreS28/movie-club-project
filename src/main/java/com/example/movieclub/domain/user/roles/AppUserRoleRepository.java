@@ -1,4 +1,4 @@
-package com.example.movieclub.domain.user;
+package com.example.movieclub.domain.user.roles;
 
 import org.springframework.data.repository.CrudRepository;
 

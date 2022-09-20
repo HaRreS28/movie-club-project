@@ -11,20 +11,26 @@
 <main class="main-content" layout:fragment="content">
     <h2 class="list-heading">Zaloguj się</h2>
     <form th:action="@{/login}" method="post" class="mc-form">
-        <p th:if="${param.error}" th:text="${session['SPRING_SECURITY_LAST_EXCEPTION'].message}"
+        <p th:if="${param.error}"
+           th:text="${session['SPRING_SECURITY_LAST_EXCEPTION'].message}"
         class="mc-form-message">
             Błąd logowania</p>
 
         <p th:if="${param.logout}" class="mc-form-message">
             Zostałeś wylogowany, możesz zalogować sie ponownie
         </p>
-
+        <p class="notification-bar" th:if="${message}" th:text="${message}">
+            Belka z powiadomieniami
+        </p>
         <label for="username">Adres email</label>
         <input type="text" id="username" name="username" placeholder="nazwa użytkownika">
         <label for="password">Hasło</label>
         <input type="password" id="password" name="password" placeholder="hasło">
         <input type="submit" value="Zaloguj się">
     </form>
+    <p class="registration-link">Nie masz jeszcze konta?
+        <a href="#" th:href="@{/rejestracja}">Zarejestruj się</a>
+    </p>
 
 </main>
 </body>

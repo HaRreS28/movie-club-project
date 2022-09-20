@@ -1,4 +1,4 @@
-package com.example.movieclub.domain.user;
+package com.example.movieclub.domain.user.roles;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

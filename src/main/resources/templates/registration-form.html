@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Zarejestruj się | MovieClub</title>
+</head>
+<body>
+    <main class="main-content" layout:fragment="content">
+        <h2 class="list-heading">Zarejestruj się</h2>
+        <form method="post" th:action="@{/rejestracja}" th:object="${user}" class="mc-form">
+            <label for="email">Adres email</label>
+            <p th:errors="*{email}" class="mc-form-message" >Błąd email</p>
+            <input id="email" type="email" placeholder="xyz@xyz.com" th:field="*{email}">
+            <label for="password">Hasło</label>
+            <p th:errors="*{password}" class="mc-form-message" >Błąd hasło</p>
+            <input id="password" type="password" placeholder="hasło" th:field="*{password}">
+            <input type="submit" value="Zarejestruj się">
+        </form>
+    </main>
+</body>
+</html>

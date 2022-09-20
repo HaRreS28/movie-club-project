@@ -24,4 +24,13 @@ public class Token {
     @ManyToOne
     @JoinColumn(name = "app_user_id", nullable = false)
     private AppUser appUser;
+
+    public Token(String token, LocalDateTime createdAt, LocalDateTime expiresAt,
+                 LocalDateTime confirmedAt, AppUser appUser) {
+        this.token = token;
+        this.createdAt = createdAt;
+        this.expiresAt = expiresAt;
+        this.confirmedAt = confirmedAt;
+        this.appUser = appUser;
+    }
 }

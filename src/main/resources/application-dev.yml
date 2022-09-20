@@ -11,6 +11,18 @@ spring:
   web:
     resources:
       static-locations: classpath:/static/,file:./uploads
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: marcinmoch757@gmail.com
+    password: dbktcjtuhjasxgip
+    properties:
+      mail:
+        smtp:
+          ssl:
+          auth: true
+          starttls:
+            enable: true
 app:
   storage:
     location: ./uploads/
