@@ -1,6 +1,7 @@
 package com.example.movieclub.domain.movie;
 
 import com.example.movieclub.domain.genre.Genre;
+import com.example.movieclub.domain.rating.Rating;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +24,10 @@ public class MovieMapper {
                 movie.getReleaseYear(),
                 movie.getGenre().getName(),
                 movie.isPromoted(),
-                movie.getPoster());
+                movie.getPoster(),
+                movie.getRatings().size(),
+                movie.getRatings().stream()
+                        .map(Rating::getRating).mapToDouble(e->e).average().orElse(0));
     }
 
 }

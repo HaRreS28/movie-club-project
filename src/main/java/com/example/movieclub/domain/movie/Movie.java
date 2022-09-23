@@ -1,11 +1,14 @@
 package com.example.movieclub.domain.movie;
 
 import com.example.movieclub.domain.genre.Genre;
+import com.example.movieclub.domain.rating.Rating;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @NoArgsConstructor
@@ -35,5 +38,7 @@ public class Movie {
     @Column(name = "promoted")
     private boolean promoted;
     private String poster;
+    @OneToMany(mappedBy = "movie")
+    private Set<Rating> ratings = new HashSet<>();
 
 }
