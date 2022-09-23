@@ -1,5 +1,4 @@
 package com.example.movieclub.domain.user;
-
 import com.example.movieclub.domain.user.roles.AppUserRole;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,6 +12,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+
 import java.util.*;
 
 @Entity
@@ -25,18 +25,22 @@ public class AppUser implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Email
     private String email;
     @Column(unique = true)
     @Pattern(regexp = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*(!_#)?).{5,}",
             message = "Password must have minimum 5 chars,containt capital letter, small letter," +
                     "digit and may have special char like '! _ #'")
+    @Column(unique = true)
+
     private String password;
     @ManyToMany
             (fetch = FetchType.EAGER)
     @JoinTable(name = "app_user_roles",
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
+
     @NotNull
     private Set<AppUserRole> appUserRole = new HashSet<>();
     private Boolean locked = false;
