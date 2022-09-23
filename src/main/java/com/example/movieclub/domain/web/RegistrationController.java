@@ -1,24 +1,40 @@
 package com.example.movieclub.domain.web;
 
+
 import com.example.movieclub.domain.registration.RegistrationService;
+
+import com.example.movieclub.domain.user.AppUserService;
+
 import com.example.movieclub.domain.user.dto.AppUserRegistrationDto;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
+
 @Controller
 @AllArgsConstructor
 public class RegistrationController {
+
     private final RegistrationService registrationService;
 
     @GetMapping("/rejestracja")
     public String registrationForm(Model model) {
         model.addAttribute("user", new AppUserRegistrationDto());
+
+    private final AppUserService appUserService;
+
+    @GetMapping("/rejestracja")
+    public String registrationForm(Model model){
+        model.addAttribute("user",new AppUserRegistrationDto());
         return "registration-form";
     }
 
@@ -38,5 +54,8 @@ public class RegistrationController {
         String confirmRegistration = registrationService.confirmRegistration(token);
         model.addAttribute("message", confirmRegistration);
         return "/login-form";
+    public String registrationForm(AppUserRegistrationDto user){
+        appUserService.saveUser(user);
+        return "redirect:login-form";
     }
 }

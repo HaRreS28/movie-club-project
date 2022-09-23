@@ -1,6 +1,7 @@
 package com.example.movieclub.domain.config;
 
 
+
 import com.example.movieclub.domain.user.roles.Roles;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -27,7 +28,6 @@ public class CustomSecurityConfiguration {
                                 HttpMethod.GET.name()))
                         .logoutSuccessUrl("/login?logout").permitAll());
 
-        http.csrf().disable();
         http.csrf().ignoringRequestMatchers(new AntPathRequestMatcher("/h2-console/**"));
         http.headers().frameOptions().sameOrigin();
         return http.build();

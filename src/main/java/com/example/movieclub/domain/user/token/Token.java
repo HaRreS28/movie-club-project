@@ -25,6 +25,7 @@ public class Token {
     @JoinColumn(name = "app_user_id", nullable = false)
     private AppUser appUser;
 
+
     public Token(String token, LocalDateTime createdAt, LocalDateTime expiresAt,
                  LocalDateTime confirmedAt, AppUser appUser) {
         this.token = token;
@@ -33,4 +34,5 @@ public class Token {
         this.confirmedAt = confirmedAt;
         this.appUser = appUser;
     }
+
 }

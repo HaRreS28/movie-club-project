@@ -10,4 +10,5 @@ public interface TokenRepository extends CrudRepository<Token,Long> {
 
     boolean existsByToken(String token);
 
+    boolean existsByToken(String token);
 }
