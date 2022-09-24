@@ -12,8 +12,6 @@
     <h2 class="list-heading">Zaloguj się</h2>
     <form th:action="@{/login}" method="post" class="mc-form">
 
-        <p th:if="${param.error}"
-           th:text="${session['SPRING_SECURITY_LAST_EXCEPTION'].message}"
 
         <p th:if="${param.error}" th:text="${session['SPRING_SECURITY_LAST_EXCEPTION'].message}"
 

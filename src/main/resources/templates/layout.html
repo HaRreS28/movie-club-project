@@ -30,17 +30,28 @@
                 <a href="#" th:href="@{#}"><i id="toggle-icon" class="far fa-plus-square"></i></a>
             </li>
 
+
+            <li class="menu-item">
+                <form method="get" th:action="@{/znajdz-film}">
+                    <input type="search" name="searched_movie" placeholder="movie..." class="search-movie">
+                </form>
+            </li>
+
             <li class="menu-item">
                 <a href="#" th:href="@{/gatunki-filmowe}">Gatunki</a>
             </li>
 
             <li class="menu-item">
-                <a href="#" th:href="@{#}">Top10</a>
+                <a href="#" th:href="@{/top10}">Top10</a>
             </li>
 
 
             <li class="menu-item" sec:authorize="hasAnyAuthority('ADMIN','MODERATOR')">
                 <a href="#" th:href="@{/admin}">Administracja</a>
+            </li>
+
+            <li class="menu-item" sec:authorize="isAuthenticated()">
+                <a href="#" th:href="@{/twoj-profil}">Mój profil</a>
             </li>
 
             <li class="menu-item">

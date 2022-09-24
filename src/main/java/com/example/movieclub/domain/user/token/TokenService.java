@@ -51,33 +51,5 @@ public class TokenService {
         confirmationToken.setConfirmedAt(confirmationDate);
         confirmationToken.getAppUser().setEnabled(true);
         return "Account confirmed";
-
-    public void saveToken(Token token){
-        tokenRepository.save(token);
-    }
-
-    public String createToken(){
-        String token;
-        do{
-           token = UUID.randomUUID().toString();
-
-        }while (tokenRepository.existsByToken(token));
-        return token;
-    }
-
-    @Transactional
-    public String confirmToken(String token){
-        Token confirmationToken = tokenRepository.findByToken(token).orElseThrow();
-        LocalDateTime confirmationDate=LocalDateTime.now();
-        if(confirmationToken.getConfirmedAt()!=null){
-            throw new IllegalStateException("email already confirmed");
-        }
-
-        if(confirmationToken.getExpiresAt().isBefore(confirmationDate)){
-            throw new IllegalStateException("token has expired");
-        }
-        confirmationToken.setConfirmedAt(LocalDateTime.now());
-        return "confirmed";
-
     }
 }

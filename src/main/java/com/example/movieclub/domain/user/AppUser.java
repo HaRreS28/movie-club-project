@@ -1,4 +1,5 @@
 package com.example.movieclub.domain.user;
+
 import com.example.movieclub.domain.user.roles.AppUserRole;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,14 +26,12 @@ public class AppUser implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @Column(unique = true)
     @Email
     private String email;
-    @Column(unique = true)
     @Pattern(regexp = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*(!_#)?).{5,}",
             message = "Password must have minimum 5 chars,containt capital letter, small letter," +
                     "digit and may have special char like '! _ #'")
-    @Column(unique = true)
 
     private String password;
     @ManyToMany
@@ -48,8 +47,8 @@ public class AppUser implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        List<GrantedAuthority> authorities=new ArrayList<>();
-        appUserRole.forEach(e->authorities.add(new SimpleGrantedAuthority(e.getName())));
+        List<GrantedAuthority> authorities = new ArrayList<>();
+        appUserRole.forEach(e -> authorities.add(new SimpleGrantedAuthority(e.getName())));
         System.out.println(authorities);
         return authorities;
     }

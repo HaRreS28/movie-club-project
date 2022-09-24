@@ -57,6 +57,16 @@ public class AppUserService implements UserDetailsService {
        return appUserRepository.findByEmail(email).orElseThrow();
     }
 
+    public AppUserRegistrationDto getDto(String email){
+        return AppUserMapper.map(getUser(email));
+    }
+
+    @Transactional
+    public String changePassword(String email,String newPassword,String confirmPassword){
+        AppUser user = getUser(email);
+        user.setPassword(passwordEncoder.encode(newPassword));
+        return "Hasło zostało zmienione";
+    }
     public String createToken(String email,AppUser appUser){
         String token = tokenService.createToken();
         tokenService.deleteOldToken(email);

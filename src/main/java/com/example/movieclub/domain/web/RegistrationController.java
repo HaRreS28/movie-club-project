@@ -26,15 +26,10 @@ public class RegistrationController {
 
     private final RegistrationService registrationService;
 
+
     @GetMapping("/rejestracja")
     public String registrationForm(Model model) {
         model.addAttribute("user", new AppUserRegistrationDto());
-
-    private final AppUserService appUserService;
-
-    @GetMapping("/rejestracja")
-    public String registrationForm(Model model){
-        model.addAttribute("user",new AppUserRegistrationDto());
         return "registration-form";
     }
 
@@ -50,12 +45,9 @@ public class RegistrationController {
     }
 
     @GetMapping("/verify")
-    public String confirmAccount(@RequestParam String token, Model model) {
+    public String confirmAccount(@RequestParam(required = false) String token, Model model) {
         String confirmRegistration = registrationService.confirmRegistration(token);
         model.addAttribute("message", confirmRegistration);
         return "/login-form";
-    public String registrationForm(AppUserRegistrationDto user){
-        appUserService.saveUser(user);
-        return "redirect:login-form";
     }
 }

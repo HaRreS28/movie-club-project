@@ -4,8 +4,13 @@ import com.example.movieclub.domain.genre.Genre;
 import com.example.movieclub.domain.genre.GenreRepository;
 import com.example.movieclub.domain.storage.FileStorageService;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
@@ -55,5 +60,25 @@ public class MovieService {
         movieRepository.save(movie);
         return MovieMapper.map(movie);
 
+    }
+
+    public List<MovieDto> findTopMovies(int size){
+        Pageable pageable = Pageable.ofSize(size);
+        return movieRepository.findTopByRating(pageable)
+                .stream()
+                .map(MovieMapper::map)
+                .toList();
+    }
+
+    public List<MovieDto> getMovies(String title){
+        return movieRepository.findMovies(title)
+                .stream()
+                .map(MovieMapper::map)
+                .toList();
+    }
+
+    public Page<MovieDto> getPage(int pageNumber,int pageSize){
+        Pageable pageable = PageRequest.of(pageNumber - 1, pageSize);
+        return movieRepository.findAll(pageable).map(MovieMapper::map);
     }
 }

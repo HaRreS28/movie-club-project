@@ -21,6 +21,8 @@ public class CustomSecurityConfiguration {
         http.authorizeHttpRequests(request ->
                 request.mvcMatchers("/admin/**")
                         .hasAnyAuthority(Roles.ADMIN.name(),Roles.MODERATOR.name())
+                        .mvcMatchers("/ocen-film/**","/twoj-profil/**")
+                        .authenticated()
                         .anyRequest().permitAll());
         http.formLogin().loginPage("/login");
         http.logout(logout ->

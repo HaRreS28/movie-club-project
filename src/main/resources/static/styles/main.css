@@ -45,6 +45,11 @@ a{
     text-align: center;
 }
 
+.search-movie{
+    color: black;
+    font-size: 0.8em;
+}
+
 .expanded > .menu-item {
     display: block;
 }
@@ -202,6 +207,8 @@ a{
     font-size: 1.6rem;
     border-radius: 4px;
     opacity: 0.8;
+    cursor: pointer;
+    margin-right: 5px;
 }
 /*Usunięcie przezroczystości po najechaniu na przycisk*/
 .movie-rating-button:hover {
@@ -369,4 +376,16 @@ textarea {
 .registration-link{
     text-align: center;
     margin: 32px 0;
+}
+
+.pages-list{
+    color: black;
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    justify-content: center;
+}
+
+.pages-list > li{
+    margin:7px 13px;
 }

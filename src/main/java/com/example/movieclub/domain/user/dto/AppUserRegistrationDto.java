@@ -19,7 +19,7 @@ public class AppUserRegistrationDto {
 
     @Email
     private String email;
-    private String email;
+
     @Pattern(regexp = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*(!_#)?).{5,200}",
             message = "Password must have minimum 5 chars,containt capital letter, small letter," +
                     "digit and may have special char like '! _ #'")
