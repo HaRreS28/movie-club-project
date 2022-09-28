@@ -1,6 +1,7 @@
 package com.example.movieclub.domain.web;
 
-import com.example.movieclub.domain.user.AppUser;
+import com.example.movieclub.domain.movie.MovieProfileDto;
+import com.example.movieclub.domain.movie.MovieService;
 import com.example.movieclub.domain.user.AppUserService;
 import com.example.movieclub.domain.user.dto.AppUserRegistrationDto;
 import lombok.AllArgsConstructor;
@@ -15,14 +16,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @AllArgsConstructor
 public class ProfileController {
     private final AppUserService appUserService;
+    private final MovieService movieService;
 
     @GetMapping("/twoj-profil")
-    public String profile() {
+    public String profile(Model model,Authentication authentication) {
+        List<MovieProfileDto> moviesDto = movieService
+                .getAllFilmCommentedOrRatedByUser(authentication.getName());
+        model.addAttribute("movies",moviesDto);
         return "your-profile";
     }
 
@@ -48,7 +54,7 @@ public class ProfileController {
             return "change-password-form";
         }
         String message = appUserService.changePassword(authentication.getName(),
-                user.getPassword(), confirmPassword);
+                user.getPassword());
         redirectAttributes.addFlashAttribute("message", message);
         return "redirect:/twoj-profil";
     }

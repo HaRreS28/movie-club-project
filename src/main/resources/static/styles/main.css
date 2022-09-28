@@ -423,9 +423,25 @@ textarea {
     opacity: 0.8;
 }
 
+.your-comment{
+    font-size: 1.15em;
+    opacity: 0.8;
+    color:lightcoral;
+}
+
 .comment-info{
     display: flex;
     justify-content: space-between;
     padding: 6px;
 }
 
+.events{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+    border: 1px #6d6d6d solid;
+}
+
+.events > *{
+    margin: 10px;
+}

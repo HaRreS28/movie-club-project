@@ -15,4 +15,5 @@ import org.springframework.web.context.WebApplicationContext;
         proxyMode = ScopedProxyMode.TARGET_CLASS )
 public class SessionRedirect {
     private String url;
+    private boolean logged;
 }

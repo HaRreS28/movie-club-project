@@ -62,7 +62,7 @@ public class AppUserService implements UserDetailsService {
     }
 
     @Transactional
-    public String changePassword(String email,String newPassword,String confirmPassword){
+    public String changePassword(String email,String newPassword){
         AppUser user = getUser(email);
         user.setPassword(passwordEncoder.encode(newPassword));
         return "Hasło zostało zmienione";

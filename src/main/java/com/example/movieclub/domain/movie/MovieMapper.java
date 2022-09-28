@@ -1,18 +1,10 @@
 package com.example.movieclub.domain.movie;
 
-import com.example.movieclub.domain.genre.Genre;
 import com.example.movieclub.domain.rating.Rating;
-import org.springframework.core.io.Resource;
-import org.springframework.stereotype.Service;
-
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.nio.file.Files;
-
 
 public class MovieMapper {
+
+    private static final String URL="/film/%d";
     public static MovieDto map(Movie movie) {
         return new MovieDto(
                 movie.getId(),
@@ -27,7 +19,14 @@ public class MovieMapper {
                 movie.getPoster(),
                 movie.getRatings().size(),
                 movie.getRatings().stream()
-                        .map(Rating::getRating).mapToDouble(e->e).average().orElse(0));
+                        .map(Rating::getRating).mapToDouble(e -> e).average().orElse(0));
     }
 
+    public static MovieProfileDto mapToProfile(Movie movie) {
+        MovieProfileDto movieDto = new MovieProfileDto();
+        movieDto.setTitle(movie.getTitle());
+        String url=String.format(URL,movie.getId());
+        movieDto.setUrl(url);
+        return movieDto;
+    }
 }

@@ -1,5 +1,6 @@
 package com.example.movieclub.domain.user;
 
+import com.example.movieclub.domain.rating.Rating;
 import com.example.movieclub.domain.user.roles.AppUserRole;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -44,7 +45,8 @@ public class AppUser implements UserDetails {
     private Set<AppUserRole> appUserRole = new HashSet<>();
     private Boolean locked = false;
     private Boolean enabled = false;
-
+    @OneToMany(mappedBy = "movie")
+    private Set<Rating> ratings = new HashSet<>();
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> authorities = new ArrayList<>();

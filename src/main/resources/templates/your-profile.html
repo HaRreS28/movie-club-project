@@ -16,6 +16,20 @@
     <ul class="list-border">
         <li><a href="#" th:href="@{twoj-profil/zmiana-hasla}">Zmień hasło</a></li>
     </ul>
+
+    <h2 class="list-heading" th:unless="${movies.isEmpty()}">Wydarzenia, w których uczestniczyłeś</h2>
+    <div th:if="${movies.isEmpty()}">
+    <h2 class="list-heading">Niestety nie uczestniczyłeś w żadnym wydarzeniu</h2>
+    <p class="list-heading">Dodaj komentarz albo oddaj głos na jakiś film!</p>
+    </div>
+
+    <ul class="movie-list">
+        <li class="events" th:each="movie: ${movies}">
+                <a href="#" th:href="@{${movie.getUrl()}}" th:text="${movie.getTitle()}">Shrek</a>
+                <p th:text="${movie.getRate()} ne null ? 'Twoja ocena: '+ ${movie.getRate()}:'Brak oceny'">3.0</p>
+                <p th:text="|Liczba twoich komentarzy: ${movie.getNumberOfComments()}|"></p>
+        </li>
+    </ul>
 </main>
 </body>
 </html>

@@ -6,6 +6,7 @@ import com.example.movieclub.domain.session.SessionRedirect;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,11 +24,16 @@ public class HomeController {
     private final SessionRedirect sessionRedirect;
 
     @GetMapping("/")
-    public String home(Model model){
+    public String home(Model model, Authentication authentication){
         model.addAttribute("movies",movieService.findAllPromotedMovies());
         model.addAttribute("heading", "Promowane filmy");
         model.addAttribute("description", "Filmy polecane przez nasz zespół");
-        return (sessionRedirect.getUrl()==null)? "movie-listing": "redirect:"+sessionRedirect.getUrl();
+        if(authentication!=null && !sessionRedirect.isLogged()){
+            sessionRedirect.setLogged(true);
+            return "redirect:"+sessionRedirect.getUrl();
+        }
+//        return (sessionRedirect.getUrl()==null)? "movie-listing": "redirect:"+sessionRedirect.getUrl();
+        return "movie-listing";
     }
 
     @GetMapping("/movies")

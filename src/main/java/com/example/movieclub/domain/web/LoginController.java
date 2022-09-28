@@ -13,9 +13,11 @@ public class LoginController {
     private final SessionRedirect sessionRedirect;
 
     @GetMapping("/login")
-    public String login(@RequestHeader String referer, @RequestParam(required = false) String error){
-        System.out.println(error);
-        System.out.println(referer);
+    public String login(@RequestHeader String referer, @RequestParam(required = false) String error
+    ,@RequestParam(required = false) String logout){
+        if(logout!=null){
+            sessionRedirect.setLogged(false);
+        }
         redirect(referer, error);
         return "login-form";
     }
@@ -23,7 +25,6 @@ public class LoginController {
     private void redirect(String referer, String param) {
         if(param==null){
                 sessionRedirect.setUrl(referer);
-                System.out.println("URL "+sessionRedirect.getUrl());
         }
     }
 }

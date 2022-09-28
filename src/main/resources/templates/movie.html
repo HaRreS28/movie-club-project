@@ -95,7 +95,11 @@
         <section class="comments" th:remove="all-but-first">
             <div class="comment" th:each="comment:${comments}">
                 <div class="comment-info">
-                    <p class="comment-author" th:text="${comment.author}">Autor</p>
+                    <p th:if="${#authentication.isAuthenticated()}"
+                       th:class="${comment.author} eq ${#authentication.name} ? 'your-comment':'comment-author'"
+                       class="comment-author" th:text="${comment.author}">Autor</p>
+                    <p th:unless="${#authentication.isAuthenticated()}"
+                       class="comment-author" th:text="${comment.author}">Autor</p>
                     <p class="comment-author" th:text="${comment.addedDate}">2020-20-02</p>
                 </div>
                 <p th:text="${comment.comment}">Komentarz</p>

@@ -5,10 +5,14 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 import java.util.List;
+import java.util.Set;
 
 public interface MovieRepository extends PagingAndSortingRepository<Movie,Long> {
     List<Movie> findAllByPromotedIsTrue();
     List<Movie> findAllByGenre_NameIgnoreCase(String name,Pageable pageable);
+
+    Set<Movie> findAllByRatings_AppUser_Email(String email);
+    Set<Movie> findAllByComments_AppUser_Email(String email);
 
     @Query("SELECT m from Movie m join m.ratings r group by m order by avg(r.rating) desc")
     List<Movie> findTopByRating(Pageable pageable);
