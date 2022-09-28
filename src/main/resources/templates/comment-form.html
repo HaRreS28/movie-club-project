@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+  <meta charset="UTF-8">
+  <title>Dodaj komentarz</title>
+</head>
+<body>
+<main class="main-content" layout:fragment="content">
+  <h2 class="list-heading">Dodaj nowy komentarz do filmu</h2>
+  <form action="" th:action="@{|/dodaj-komentarz/${id}|}" th:object="${comment}" method="post" class="mc-form">
+    <label for="movieShortDescription">Komentarz - max 500 znaków</label>
+    <textarea id="movieShortDescription" rows="5" th:field="*{comment}" maxlength="500" required>
+    </textarea>
+    <input type="submit" value="Dodaj">
+  </form>
+</main>
+</body>
+</html>

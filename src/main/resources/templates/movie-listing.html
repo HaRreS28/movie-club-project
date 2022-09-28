@@ -12,6 +12,8 @@
         <!-- Opis pobieramy z modelu -->
         <p class="list-description" th:text="${description}">Opis sekcji, przykładowo opis kategorii, albo strony głównej</p>
         <!-- Zostawiamy tylko pierwszy element <li> -->
+        <a th:unless="${currentPage}" th:text="|Wszystkie filmy na naszej platformie znajdziesz tutaj!|"
+        th:href="@{/movies}" class="all-movies-link"></a>
         <ul class="movie-list" th:remove="all-but-first">
             <!-- Pętla po wszystkich filmach z modelu -->
             <li class="movie-list-item" th:each="movie: ${movies}">
@@ -86,8 +88,28 @@
         </ul>
         <section th:if="${currentPage}">
             <ul class="pages-list">
-                <li th:each="pageNumber:${#numbers.sequence(1,pages)}">
-                    <a th:href="@{|/movies?page=${pageNumber}|}" th:text="${pageNumber}"></a>
+<!--                <li th:each="pageNumber:${#numbers.sequence(1,pages)}">-->
+<!--                    <a th:href="@{|/movies?page=${pageNumber}|}" th:text="${pageNumber}"></a>-->
+<!--                </li>-->
+                <li th:if="${currentPage}> 1">
+                    <a th:href="@{|/movies?page=${currentPage+(-1)}|}" th:text="Previous"></a>
+                </li>
+                <li th:if="${currentPage}" class="current-page">
+                    <a th:href="@{|/movies?page=${currentPage}|}" th:text="${currentPage}"></a>
+                </li>
+                <li th:if="${currentPage+1}<=${pages}">
+                    <a th:href="@{|/movies?page=${currentPage+1}|}" th:text="${currentPage+1}"></a>
+                </li>
+                <li th:if="${currentPage+2}<=${pages}">
+                    <a th:href="@{|/movies?page=${currentPage+2}|}" th:text="${currentPage+2}"></a>
+                </li>
+
+                <li th:if="${pages}-${currentPage}>=3">
+                    <a th:href="@{|/movies?page=${pages}|}" th:text="|... ${pages}|"></a>
+                </li>
+
+                <li th:if="${currentPage+1}<= ${pages}">
+                    <a th:href="@{|/movies?page=${currentPage+1}|}" th:text="Next"></a>
                 </li>
             </ul>
         </section>

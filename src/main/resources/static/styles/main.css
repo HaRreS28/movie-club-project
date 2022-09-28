@@ -389,3 +389,43 @@ textarea {
 .pages-list > li{
     margin:7px 13px;
 }
+
+.current-page > a{
+    color: white;
+}
+
+.all-movies-link{
+    margin: 10px auto;
+    text-align: center;
+    display: block;
+}
+
+.comments{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    flex:1;
+}
+
+.comment{
+    overflow-wrap: break-word;
+    padding: 16px;
+    border: 1px #6d6d6d solid;
+    margin: 5px 0;
+}
+
+.comment >p{
+    margin:10px 0;
+}
+
+.comment-author{
+    font-size: 1.15em;
+    opacity: 0.8;
+}
+
+.comment-info{
+    display: flex;
+    justify-content: space-between;
+    padding: 6px;
+}
+

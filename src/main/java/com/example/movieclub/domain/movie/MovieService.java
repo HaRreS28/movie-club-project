@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 
 
@@ -34,8 +35,9 @@ public class MovieService {
         return movieRepository.findById(id).map(MovieMapper::map);
     }
 
-    public List<MovieDto> findAllByGenreName(String name) {
-        return movieRepository.findAllByGenre_NameIgnoreCase(name)
+    public List<MovieDto> findAllByGenreName(String name,int pageNumber,int pageSize) {
+        Pageable pageable = PageRequest.of(pageNumber - 1, pageSize);
+        return movieRepository.findAllByGenre_NameIgnoreCase(name,pageable)
                 .stream().map(MovieMapper::map).toList();
     }
 
@@ -71,7 +73,7 @@ public class MovieService {
     }
 
     public List<MovieDto> getMovies(String title){
-        return movieRepository.findMovies(title)
+        return movieRepository.findMovies(title.toUpperCase())
                 .stream()
                 .map(MovieMapper::map)
                 .toList();

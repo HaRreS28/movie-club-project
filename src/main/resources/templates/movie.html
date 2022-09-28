@@ -85,6 +85,29 @@
                 tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in
                 faucibus.</p>
         </section>
+        <h2 class="list-heading">Wasze komentarze</h2>
+        <p sec:authorize="!isAuthenticated()" class="list-heading">
+            <a href="#" th:href="@{/login}">Zaloguj się</a>, aby dodać komentarz
+        </p>
+        <p sec:authorize="isAuthenticated()" class="list-heading">
+            <a href="#" th:href="@{|/dodaj-komentarz/${movie.id}|}">Dodaj komentarz</a>
+        </p>
+        <section class="comments" th:remove="all-but-first">
+            <div class="comment" th:each="comment:${comments}">
+                <div class="comment-info">
+                    <p class="comment-author" th:text="${comment.author}">Autor</p>
+                    <p class="comment-author" th:text="${comment.addedDate}">2020-20-02</p>
+                </div>
+                <p th:text="${comment.comment}">Komentarz</p>
+            </div>
+            <div class="comment">
+                <p class="comment-author">Autor | 2002 20 02</p>
+                <p>KomentarzKomentarzKomentarzKomentarzKomentarzKomentarzKomentarz
+                    KomentarzKomentarzKomentarzKomentarzKomentarzKomentarz
+                    KomentarzKomentarzKomentarzKomentarzKomentarzKomentarzKomentarz
+                    KomentarzKomentarzKomentarzKomentarzKomentarzKomentarz</p>
+            </div>
+        </section>
     </main>
 </div>
 </body>

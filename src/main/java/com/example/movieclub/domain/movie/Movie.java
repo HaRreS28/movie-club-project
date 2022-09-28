@@ -1,5 +1,6 @@
 package com.example.movieclub.domain.movie;
 
+import com.example.movieclub.domain.comment.Comment;
 import com.example.movieclub.domain.genre.Genre;
 import com.example.movieclub.domain.rating.Rating;
 import lombok.Getter;
@@ -40,5 +41,7 @@ public class Movie {
     private String poster;
     @OneToMany(mappedBy = "movie")
     private Set<Rating> ratings = new HashSet<>();
+    @OneToMany(mappedBy = "movie")
+    private Set<Comment> comments=new HashSet<>();
 
 }

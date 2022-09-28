@@ -1,5 +1,7 @@
 package com.example.movieclub.domain.web;
 
+import com.example.movieclub.domain.comment.CommentDto;
+import com.example.movieclub.domain.comment.CommentService;
 import com.example.movieclub.domain.movie.MovieDto;
 import com.example.movieclub.domain.movie.MovieService;
 import com.example.movieclub.domain.rating.RatingService;
@@ -23,6 +25,7 @@ public class MovieController {
     private final MovieService movieService;
     private final RatingService ratingService;
     private final static int SIZE=10;
+    private final CommentService commentService;
 
     @GetMapping("/film/{id}")
     public String getMovie(@PathVariable Long id, Authentication authentication, Model model) {
@@ -36,6 +39,8 @@ public class MovieController {
             //i zapisujemy go w modelu
             model.addAttribute("userRating", rating);
         }
+        List<CommentDto> allComments = commentService.findAllComments(id);
+        model.addAttribute("comments",allComments);
         return "movie";
     }
 
