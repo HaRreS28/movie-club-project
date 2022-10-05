@@ -11,6 +11,9 @@ public interface MovieRepository extends PagingAndSortingRepository<Movie,Long> 
     List<Movie> findAllByPromotedIsTrue();
     List<Movie> findAllByGenre_NameIgnoreCase(String name,Pageable pageable);
 
+    @Query("Select count(m.id) from Movie m where m.genre.name=:name")
+     int getPageSizeGenre(String name);
+
     Set<Movie> findAllByRatings_AppUser_Email(String email);
     Set<Movie> findAllByComments_AppUser_Email(String email);
 

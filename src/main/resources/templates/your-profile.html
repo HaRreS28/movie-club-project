@@ -25,7 +25,10 @@
 
     <ul class="movie-list">
         <li class="events" th:each="movie: ${movies}">
-                <a href="#" th:href="@{${movie.getUrl()}}" th:text="${movie.getTitle()}">Shrek</a>
+                <span>
+                    Tytuł:
+                    <a href="#" th:href="@{${movie.getUrl()}}" th:text="${movie.getTitle()}">Shrek</a>
+                </span>
                 <p th:text="${movie.getRate()} ne null ? 'Twoja ocena: '+ ${movie.getRate()}:'Brak oceny'">3.0</p>
                 <p th:text="|Liczba twoich komentarzy: ${movie.getNumberOfComments()}|"></p>
         </li>

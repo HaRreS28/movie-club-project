@@ -150,7 +150,7 @@ a{
 }
 /*Mniejsza okładka na małych ekranach*/
 .movie-summary-cover {
-    object-fit: cover;
+    object-fit: contain;
     max-width: 200px;
 }
 /*Odstęp informacji o filmie od okładki*/
@@ -440,6 +440,8 @@ textarea {
     flex-direction: column;
     margin-bottom: 16px;
     border: 1px #6d6d6d solid;
+    justify-content: space-between;
+    font-size: 1.1em;
 }
 
 .events > *{

@@ -43,6 +43,10 @@ public class MovieService {
                 .stream().map(MovieMapper::map).toList();
     }
 
+    public int findAllByGenreNameSize(String name){
+       return movieRepository.getPageSizeGenre(name);
+    }
+
     @Transactional
     public MovieDto addMovie(MovieSaveDto movieSaveDto){
         Movie movie = new Movie();

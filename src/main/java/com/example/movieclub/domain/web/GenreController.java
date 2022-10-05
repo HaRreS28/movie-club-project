@@ -32,6 +32,9 @@ public class GenreController {
                 .orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND));
         List<MovieDto> movieDtos = movieService.findAllByGenreName(genreDto.getName(),page,HomeController.SIZE);
         model.addAttribute("heading", genreDto.getName());
+        model.addAttribute("currentPage",page);
+        int size = Math.ceilDiv(movieService.findAllByGenreNameSize(name), HomeController.SIZE);
+        model.addAttribute("pages",size);
         model.addAttribute("description", genreDto.getDescription());
         model.addAttribute("movies",movieDtos);
         return "movie-listing";
