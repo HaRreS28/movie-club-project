@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Zmien haslo | MovieClub</title>
+</head>
+<body>
+<main class="main-content" layout:fragment="content">
+    <h2 class="list-heading">Potwierdz hasło za pomocą kodu wysłanego pod twoj adres email</h2>
+    <form method="post" th:action="@{/twoj-profil/confirm-pass}" class="mc-form">
+        <label for="code">Kod potwierdzajacy</label>
+        <input type="number" name="code" id="code" required placeholder="123456">
+        <input type="submit" value="Zmień hasło">
+    </form>
+</main>
+</body>
+</html>
