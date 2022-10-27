@@ -22,4 +22,7 @@ public interface MovieRepository extends PagingAndSortingRepository<Movie,Long> 
 
     @Query("SELECT m from Movie m  where UPPER(m.title) like %:title%")
     List<Movie> findMovies(String title);
+
+    @Query("Select Count(m) from Movie m")
+    int getQuantityOfMovies();
 }

@@ -28,9 +28,9 @@ public class CodeService {
     private String createCode(){
         StringBuilder code = new StringBuilder();
         do{
-            List<Integer> integers = IntStream.rangeClosed(1, 9).boxed().collect(Collectors.toList()).subList(1,6);
+            List<Integer> integers = IntStream.rangeClosed(1, 9).boxed().collect(Collectors.toList());
             Collections.shuffle(integers);
-            integers.stream().map(Object::toString).forEach(code::append);
+            integers.subList(1,6).stream().map(Object::toString).forEach(code::append);
         }while(codeRepository.existsByCode(code.toString()));
         return code.toString();
     }

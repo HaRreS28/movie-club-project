@@ -11,15 +11,4 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 @AllArgsConstructor
 class MovieClubApplicationTests {
-
-    private final AppUserRepository appUserRepository;
-
-    @Test
-    void contextLoads() {
-        AppUserRegistrationDto appUserCredentialsDto = appUserRepository
-                .findByEmail("admin@example.com")
-                .map(AppUserMapper::map).orElseThrow();
-
-    }
-
 }

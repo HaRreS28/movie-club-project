@@ -14,7 +14,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
     <script src="../static/scripts/common.js" th:src="@{/scripts/common.js}" defer></script>
+    <script src="../static/scripts/common.js" th:src="@{/scripts/popup.js}" defer></script>
     <link rel="stylesheet" href="../static/styles/main.css" th:href="@{/styles/main.css}">
+    <link rel="stylesheet" href="../static/styles/main.css" th:href="@{/styles/popup.css}">
 </head>
 <body>
 <div class="container">
@@ -67,6 +69,19 @@
             i klasykach kina.
         </p>
     </header>
+
+    <div class="modal hide" id="modal" th:unless="${@sessionAcceptTerms.areAccepted}">
+        <header class="modal-header">
+            Informacje podstawowe
+        </header>
+        <section class="modal-body">
+            Wchodząc na naszą stronę jesteś zobowiązany do przestrzegania regulaminu ustawionego przez naszą
+            firmę, jednocześnie akceptując warunki naszej umowy. Potwierdz warunki aby przejść dalej.
+        </section>
+        <form method="post" th:action="@{/accept-terms} " class="modal-form">
+        <button type="submit" class="accept-button">Potwierdz</button>
+        </form>
+    </div>
 
     <main class="main-content" layout:fragment="content"></main>
 

@@ -33,6 +33,9 @@ public class MovieService {
                 .toList();
     }
 
+    public int quantityOfMovies(){
+        return movieRepository.getQuantityOfMovies();
+    }
     public Optional<MovieDto> findById(Long id) {
         return movieRepository.findById(id).map(MovieMapper::map);
     }
