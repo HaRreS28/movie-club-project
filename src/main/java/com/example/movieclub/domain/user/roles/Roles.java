@@ -1,6 +1,6 @@
 package com.example.movieclub.domain.user.roles;
 
-public enum Roles {
+public enum Roles{
     ADMIN,
     USER,
     MODERATOR

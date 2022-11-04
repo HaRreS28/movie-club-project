@@ -447,3 +447,49 @@ textarea {
 .events > *{
     margin: 10px;
 }
+
+.message{
+    display: flex;
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.feedback{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+    border: 1px #6d6d6d solid;
+    justify-content: space-between;
+    font-size: 1.1em;
+    list-style: none;
+    overflow-wrap: break-word;
+}
+
+.feedback > *{
+    margin: 10px;
+}
+
+.feedback-topic{
+    color: lightcoral;
+}
+
+.feedback-username{
+    color: deeppink;
+}
+
+.feedback-message{
+    margin-top: 7px;
+    letter-spacing: 0.05em;
+}
+
+@media only screen and (max-width:960px ) {
+    .message{
+        bottom: 30px;
+        right: 30px;
+        display: none;
+    }
+}

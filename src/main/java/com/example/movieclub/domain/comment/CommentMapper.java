@@ -10,7 +10,7 @@ public class CommentMapper {
         Comment comment = new Comment();
         comment.setComment(commentDto.getComment());
         LocalDate date = LocalDate.now();
-        DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-dd-MM");
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         comment.setAddedDate(date.format(format));
         return comment;
     }

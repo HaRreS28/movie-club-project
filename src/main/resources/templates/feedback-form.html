@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Ulepsz nasza strone - MovieClub</title>
+</head>
+<body>
+<main class="main-content" layout:fragment="content">
+    <h2 class="list-heading">Napisz do nas</h2>
+    <p class="notification-bar" th:if="${error}" th:text="${error}">Błąd</p>
+    <form th:action="@{/send-feedback}" th:object="${feedback}" method="post" class="mc-form">
+        <label for="topic">Temat</label>
+        <select id="topic" th:field="*{topic}">
+            <option th:value="BŁĘDY">Błędy</option>
+            <option th:value="PROŚBY">Prośby</option>
+            <option th:value="INNE">Inne</option>
+        </select>
+        <label for="message">Wiadomość</label>
+        <textarea id="message" th:field="*{message}" placeholder="Zauważyłem, że ..." maxlength="501"
+        rows="7"></textarea>
+        <input type="submit" value="Wyślij wiadomość">
+    </form>
+    </main>
+</body>
+</html>

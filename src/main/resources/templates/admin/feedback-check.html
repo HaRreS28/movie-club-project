@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Sprawdz feedbacki</title>
+</head>
+<body>
+
+<main class="main-content" layout:fragment="content">
+    <h2 class="list-heading">Sprawdź odczucia użytkowników</h2>
+    <section>
+        <ul class="feedbacks-list">
+            <li class="feedback" th:each="feedback:${feedbacks}">
+                    <p th:text="|Temat: ${feedback.topic}|" class="feedback-topic">Uwagi</p>
+                <p th:text="|Użytkownik: ${feedback.username}|" class="feedback-username"></p>
+                <span> <p style="letter-spacing: 0.2rem; font-weight: bold">Treść wiadomości:</p>
+                <p th:text="${feedback.message}" class="feedback-message"></p>
+                </span>
+            </li>
+        </ul>
+    </section>
+</main>
+</body>
+</html>

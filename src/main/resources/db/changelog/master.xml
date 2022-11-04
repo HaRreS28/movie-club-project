@@ -14,8 +14,7 @@
     <include file="0007_create_table_movie_rating.xml" relativeToChangelogFile="true"/>
     <include file="0008_create_table_comment.xml" relativeToChangelogFile="true"/>
     <include file="0009_create_table_code.xml" relativeToChangelogFile="true"/>
-
-
+    <include file="0010_create_table_feedback_message.xml" relativeToChangelogFile="true"/>
 
     <include file="../testData/0001_genres.sql" relativeToChangelogFile="true" context="dev"/>
     <include file="../testData/0002_movies.sql" relativeToChangelogFile="true" context="dev"/>

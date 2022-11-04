@@ -22,7 +22,8 @@ public class CustomSecurityConfiguration {
         http.authorizeHttpRequests(request ->
                 request.mvcMatchers("/admin/**")
                         .hasAnyAuthority(Roles.ADMIN.name(), Roles.MODERATOR.name())
-                        .mvcMatchers("/ocen-film/**", "/twoj-profil/**", "/dodaj-komentarz/**")
+                        .mvcMatchers("/ocen-film/**", "/twoj-profil/**", "/dodaj-komentarz/**",
+                                "/feedback/**")
                         .authenticated()
                         .anyRequest().permitAll());
         http.formLogin().loginPage("/login").permitAll();
