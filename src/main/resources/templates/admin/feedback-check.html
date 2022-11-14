@@ -14,7 +14,13 @@
     <section>
         <ul class="feedbacks-list">
             <li class="feedback" th:each="feedback:${feedbacks}">
+                <div class="feedback-header">
                     <p th:text="|Temat: ${feedback.topic}|" class="feedback-topic">Uwagi</p>
+                    <div class="feedback-header-marks">
+                        <i class="marks fa-solid fa-check fa-2xl"></i>
+                        <i class="marks fa-solid fa-xmark fa-2xl"></i>
+                    </div>
+                </div>
                 <p th:text="|Użytkownik: ${feedback.username}|" class="feedback-username"></p>
                 <span> <p style="letter-spacing: 0.2rem; font-weight: bold">Treść wiadomości:</p>
                 <p th:text="${feedback.message}" class="feedback-message"></p>

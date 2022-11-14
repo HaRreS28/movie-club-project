@@ -1,13 +1,10 @@
 const message = document.getElementsByClassName("fa-message")
 window.onload=()=>{
-    changeSize()
+    changeSizeMessage()
 }
+window.addEventListener("resize",changeSizeMessage)
 
-window.onresize=()=>{
-    changeSize()
-}
-
-function changeSize(){
+function changeSizeMessage(){
     if(window.innerWidth<=960){
         message[0].classList.remove("fa-2xl")
         message[0].classList.add("fa-lg")

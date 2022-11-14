@@ -17,7 +17,7 @@ public class AcceptTermsController {
     @PostMapping("/accept-terms")
     public String acceptTerms(HttpServletResponse response) {
 //        response.addCookie(new Cookie("acceptTerms","true"));
-//        acceptTerms.setAreAccepted(true);
+        acceptTerms.setAreAccepted(true);
         return "redirect:/";
     }
 }

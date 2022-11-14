@@ -14,8 +14,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
     <script src="../static/scripts/common.js" th:src="@{/scripts/common.js}" defer></script>
-    <script src="../static/scripts/common.js" th:src="@{/scripts/popup.js}" defer></script>
-    <script src="../static/scripts/common.js" th:src="@{/scripts/message.js}" defer></script>
+    <script src="../static/scripts/popup.js" th:src="@{/scripts/popup.js}" defer></script>
+    <script src="../static/scripts/message.js" th:src="@{/scripts/message.js}" defer></script>
+    <script src="../static/scripts/marks.js" th:src="@{/scripts/marks.js}" defer></script>
     <link rel="stylesheet" href="../static/styles/main.css" th:href="@{/styles/main.css}">
     <link rel="stylesheet" href="../static/styles/main.css" th:href="@{/styles/popup.css}">
 </head>
@@ -71,7 +72,7 @@
         </p>
     </header>
 
-    <div class="modal hide" id="modal" th:unless="${@sessionAcceptTerms.areAccepted}">
+    <div class="modal" id="modal" th:unless="${@sessionAcceptTerms.areAccepted}">
         <header class="modal-header">
             Informacje podstawowe
         </header>

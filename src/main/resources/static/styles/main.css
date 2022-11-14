@@ -469,6 +469,15 @@ textarea {
     overflow-wrap: break-word;
 }
 
+.feedback-header{
+    display: flex;
+    justify-content:space-between;
+}
+
+.feedback-header-marks > i:first-child{
+    margin:0 40px;
+}
+
 .feedback > *{
     margin: 10px;
 }
@@ -485,6 +494,7 @@ textarea {
     margin-top: 7px;
     letter-spacing: 0.05em;
 }
+
 
 @media only screen and (max-width:960px ) {
     .message{
