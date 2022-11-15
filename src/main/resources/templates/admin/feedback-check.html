@@ -6,6 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Sprawdz feedbacki</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 
@@ -17,8 +18,12 @@
                 <div class="feedback-header">
                     <p th:text="|Temat: ${feedback.topic}|" class="feedback-topic">Uwagi</p>
                     <div class="feedback-header-marks">
-                        <i class="marks fa-solid fa-check fa-2xl"></i>
-                        <i class="marks fa-solid fa-xmark fa-2xl"></i>
+                        <form method="post" th:action="@{|/admin/feedback-checked/${feedback.id}|}">
+                            <button class="icon-btn" type="submit"><i class="marks fa-solid fa-check fa-2xl"></i></button>
+                        </form>
+                        <form method="post" th:action="@{|/admin/feedback-removed/${feedback.id}|}">
+                        <button class="icon-btn" type="submit"><i class="marks fa-solid fa-xmark fa-2xl"></i></button>
+                        </form>
                     </div>
                 </div>
                 <p th:text="|Użytkownik: ${feedback.username}|" class="feedback-username"></p>

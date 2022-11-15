@@ -20,8 +20,19 @@ public class FeedbackMessageService {
         return dto;
     }
 
+    @Transactional
+    public FeedbackMessageDto setIsChecked(Long id){
+        FeedbackMessage feedbackMessage = feedbackMessageRepository.findById(id).orElseThrow();
+        feedbackMessage.setChecked(true);
+        return FeedbackMessageMapper.map(feedbackMessage);
+    }
     public List<FeedbackMessageDto> findAllFeedbackMessages() {
         return StreamSupport.stream(feedbackMessageRepository.findAll().spliterator(), false)
+                .map(FeedbackMessageMapper::map).toList();
+    }
+
+    public List<FeedbackMessageDto> findAllFeedbackMessagesNotChecked(){
+        return feedbackMessageRepository.findByCheckedIsFalse().stream()
                 .map(FeedbackMessageMapper::map).toList();
     }
 

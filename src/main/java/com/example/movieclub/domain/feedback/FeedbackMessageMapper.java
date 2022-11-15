@@ -10,11 +10,13 @@ public class FeedbackMessageMapper {
         feedbackMessage.setTopic(dto.getTopic());
         feedbackMessage.setUsername(dto.getUsername());
         feedbackMessage.setCreatedAt(LocalDateTime.now());
+        feedbackMessage.setChecked(false);
         return feedbackMessage;
     }
 
     public static FeedbackMessageDto map(FeedbackMessage feedbackMessage) {
         FeedbackMessageDto dto = new FeedbackMessageDto();
+        dto.setId(feedbackMessage.getId());
         dto.setUsername(feedbackMessage.getUsername());
         dto.setMessage(feedbackMessage.getMessage());
         dto.setTopic(feedbackMessage.getTopic());

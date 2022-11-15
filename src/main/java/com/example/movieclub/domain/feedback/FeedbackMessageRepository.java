@@ -8,4 +8,5 @@ import java.util.List;
 public interface FeedbackMessageRepository extends CrudRepository<FeedbackMessage,Long> {
 
     List<FeedbackMessage> findAllByTopic(String topic);
+    List<FeedbackMessage> findByCheckedIsFalse();
 }

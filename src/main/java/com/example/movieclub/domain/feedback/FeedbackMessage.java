@@ -24,4 +24,5 @@ public class FeedbackMessage {
     private String message;
     private String username;
     private LocalDateTime createdAt;
+    private boolean checked;
 }

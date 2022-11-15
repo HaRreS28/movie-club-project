@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -16,10 +18,16 @@ public class FeedbackManagementController {
     private final FeedbackMessageService feedbackMessageService;
 
     @GetMapping("/admin/sprawdz-feedback")
-    public String checkFeedbacks(Model model){
-        List<FeedbackMessageDto> feedbacks = feedbackMessageService.findAllFeedbackMessages();
-        model.addAttribute("feedbacks",feedbacks);
+    public String checkFeedbacks(Model model) {
+        List<FeedbackMessageDto> feedbacks = feedbackMessageService.findAllFeedbackMessagesNotChecked();
+        model.addAttribute("feedbacks", feedbacks);
         return "admin/feedback-check";
     }
 
+    @PostMapping("/admin/feedback-checked/{id}")
+    public String setFeedbackChecked(@PathVariable Long id) {
+        feedbackMessageService.setIsChecked(id);
+        return "redirect:/admin/sprawdz-feedback";
+    }
 }
+

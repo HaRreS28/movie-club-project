@@ -11,6 +11,7 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 @Setter
 public class FeedbackMessageDto {
+    private Long id;
     private String topic;
     @Size(max = 500,message = "Wiadomość nie może być dluższa niż 500 znaków")
     private String message;

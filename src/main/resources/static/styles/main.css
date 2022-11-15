@@ -474,9 +474,13 @@ textarea {
     justify-content:space-between;
 }
 
-.feedback-header-marks > i:first-child{
-    margin:0 40px;
+.feedback-header-marks{
+    max-width: 10%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 }
+
 
 .feedback > *{
     margin: 10px;
@@ -502,4 +506,14 @@ textarea {
         right: 30px;
         display: none;
     }
+    .feedback-header-marks{
+        max-width: 20%;
+    }
+}
+
+
+.icon-btn{
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
 }
