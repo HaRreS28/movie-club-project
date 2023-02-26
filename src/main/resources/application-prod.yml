@@ -6,8 +6,8 @@ spring:
       static-locations: classpath:/static/,file:C:\MovieClub
   datasource:
     url:  jdbc:mysql://localhost:3306/movieclub
-    username: root
-    password: admin
+    username: 
+    password: 
     driver-class-name: com.mysql.cj.jdbc.Driver
 app:
   storage:
