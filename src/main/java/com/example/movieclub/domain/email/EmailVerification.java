@@ -14,7 +14,7 @@ import javax.mail.internet.MimeMessage;
 public class EmailVerification implements EmailSender{
 
     private final JavaMailSender mailSender;
-    private static final String FROM="marcinmoch757@gmail.com";
+    private static final String FROM="";
 
     @Override
     @Async
