@@ -40,13 +40,13 @@ public class AppUser implements UserDetails {
     @JoinTable(name = "app_user_roles",
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
-
     @NotNull
     private Set<AppUserRole> appUserRole = new HashSet<>();
     private Boolean locked = false;
     private Boolean enabled = false;
     @OneToMany(mappedBy = "movie")
     private Set<Rating> ratings = new HashSet<>();
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> authorities = new ArrayList<>();

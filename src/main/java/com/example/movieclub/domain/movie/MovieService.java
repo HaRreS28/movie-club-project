@@ -36,6 +36,7 @@ public class MovieService {
     public int quantityOfMovies(){
         return movieRepository.getQuantityOfMovies();
     }
+
     public Optional<MovieDto> findById(Long id) {
         return movieRepository.findById(id).map(MovieMapper::map);
     }
@@ -102,7 +103,7 @@ public class MovieService {
         Set<Movie> movies = new HashSet<>();
         movies.addAll(movie1);
         movies.addAll(movie2);
-
+        
         return movies.stream().map(e->{
             MovieProfileDto dto = MovieMapper.mapToProfile(e);
             Optional<Rating> rating = ratingRepository.findByAppUser_EmailAndMovie_Id(email, e.getId());

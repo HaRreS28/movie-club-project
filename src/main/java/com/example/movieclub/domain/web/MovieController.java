@@ -27,7 +27,7 @@ public class MovieController {
     private final static int SIZE=10;
     private final CommentService commentService;
 
-    @GetMapping("/film/{id}")
+    @GetMapping("/film/{id:\\d+}")
     public String getMovie(@PathVariable Long id, Authentication authentication, Model model) {
         MovieDto movieDto = movieService.findById(id)
                 .orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND));

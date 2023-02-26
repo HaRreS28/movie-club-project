@@ -21,7 +21,7 @@ public class CustomSecurityConfiguration {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(request ->
                 request.mvcMatchers("/admin/**")
-                        .hasAnyAuthority(Roles.ADMIN.name(), Roles.MODERATOR.name())
+                        .hasAnyAuthority(Roles.ROLE_ADMIN.name(), Roles.ROLE_MODERATOR.name())
                         .mvcMatchers("/ocen-film/**", "/twoj-profil/**", "/dodaj-komentarz/**",
                                 "/feedback/**")
                         .authenticated()
@@ -34,6 +34,7 @@ public class CustomSecurityConfiguration {
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.ALWAYS);
         http.csrf().ignoringRequestMatchers(new AntPathRequestMatcher("/h2-console/**"));
         http.headers().frameOptions().sameOrigin();
+        http.exceptionHandling().accessDeniedPage("/error/404.html");
         return http.build();
     }
 

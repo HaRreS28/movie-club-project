@@ -4,9 +4,9 @@ values ('admin@example.com', '{noop}adminpass',true,false),
        ('moderator@example.com', '{noop}moderatorpass',true,false);
 
 insert into app_user_role (name, description)
-values ('ADMIN', 'pełne uprawnienia'),
-       ('USER', 'podstawowe uprawnienia, możliwośc oddawania głosów'),
-       ('MODERATOR', 'podstawowe uprawnienia + możliwość zarządzania treściami');
+values ('ROLE_ADMIN', 'pełne uprawnienia'),
+       ('ROLE_USER', 'podstawowe uprawnienia, możliwośc oddawania głosów'),
+       ('ROLE_MODERATOR', 'podstawowe uprawnienia + możliwość zarządzania treściami');
 
 insert into app_user_roles (user_id, role_id)
 values (1, 1),

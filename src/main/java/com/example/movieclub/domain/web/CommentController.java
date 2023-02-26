@@ -21,7 +21,7 @@ public class CommentController {
     private final MovieService movieService;
     @GetMapping("/dodaj-komentarz/{id}")
     public String commentForm(Model model, @PathVariable Long id){
-        if(id> movieService.quantityOfMovies()) throw new ResponseStatusException(NOT_FOUND, "Unable to find resource");
+        if(id> movieService.quantityOfMovies() || id<=0) throw new ResponseStatusException(NOT_FOUND, "Unable to find resource");
         model.addAttribute("comment",new CommentDto());
         model.addAttribute("id",id);
         return "comment-form";
@@ -29,7 +29,7 @@ public class CommentController {
 
     @PostMapping("/dodaj-komentarz/{id}")
     public String addComment(@PathVariable Long id, CommentDto comment, Authentication authentication){
-        if(id> movieService.quantityOfMovies()) throw new ResponseStatusException(NOT_FOUND, "Unable to find resource");
+        if(id> movieService.quantityOfMovies() || id<=0) throw new ResponseStatusException(NOT_FOUND, "Unable to find resource");
         commentService.save(comment, authentication.getName(), id);
         return "redirect:/film/"+id;
     }

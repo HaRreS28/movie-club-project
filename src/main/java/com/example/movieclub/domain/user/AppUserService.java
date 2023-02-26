@@ -77,7 +77,7 @@ public class AppUserService implements UserDetailsService {
     }
 
     public String saveUser(AppUserRegistrationDto registrationDto){
-        AppUserRole userRole = appUserRoleRepository.findByName(Roles.USER.name()).orElseThrow();
+        AppUserRole userRole = appUserRoleRepository.findByName(Roles.ROLE_USER.name()).orElseThrow();
         AppUser appUser = new AppUser();
         appUser.getAppUserRole().add(userRole);
         appUser.setPassword(passwordEncoder.encode(registrationDto.getPassword()));

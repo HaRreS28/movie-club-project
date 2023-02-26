@@ -50,7 +50,7 @@
             </li>
 
 
-            <li class="menu-item" sec:authorize="hasAnyAuthority('ADMIN','MODERATOR')">
+            <li class="menu-item" sec:authorize="hasAnyAuthority('ROLE_ADMIN','ROLE_MODERATOR')">
                 <a href="#" th:href="@{/admin}">Administracja</a>
             </li>
 

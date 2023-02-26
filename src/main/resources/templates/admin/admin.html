@@ -15,9 +15,9 @@
             Belka z powiadomieniami
         </p>
         <ul class="list-border">
-            <li sec:authorize="hasAnyAuthority('ADMIN')"><a href="#"  th:href="@{admin/dodaj-film}">Dodaj film</a></li>
-            <li sec:authorize="hasAnyAuthority('ADMIN')"><a  href="#"  th:href="@{admin/dodaj-gatunek}">Dodaj gatunek</a></li>
-            <li sec:authorize="hasAnyAuthority('ADMIN','MODERATOR')"><a  href="#" th:href="@{admin/sprawdz-feedback}">Sprawdz wiadomości</a></li>
+            <li sec:authorize="hasAnyAuthority('ROLE_ADMIN')"><a href="#"  th:href="@{admin/dodaj-film}">Dodaj film</a></li>
+            <li sec:authorize="hasAnyAuthority('ROLE_ADMIN')"><a  href="#"  th:href="@{admin/dodaj-gatunek}">Dodaj gatunek</a></li>
+            <li sec:authorize="hasAnyAuthority('ROLE_ADMIN','ROLE_MODERATOR')"><a  href="#" th:href="@{admin/sprawdz-feedback}">Sprawdz wiadomości</a></li>
         </ul>
     </main>
 </body>
